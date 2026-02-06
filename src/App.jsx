@@ -41,7 +41,7 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen relative flex flex-col items-center justify-center overflow-hidden selection:bg-pink-300 selection:text-red-900">
+    <div className={`min-h-screen relative flex flex-col items-center justify-center overflow-hidden selection:bg-pink-300 selection:text-red-900 transition-colors duration-1000 ${isValentine ? 'bg-gradient-deep cursor-heart' : 'bg-gradient-default'}`}>
       <Background />
       <MusicPlayer ref={musicRef} />
 

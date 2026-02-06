@@ -20,8 +20,20 @@
 
 @layer base {
   body {
-    @apply bg-gradient-to-br from-pink-200 via-red-300 to-red-500 min-h-screen overflow-hidden font-sans text-white;
+    @apply min-h-screen overflow-hidden font-sans text-white transition-colors duration-1000 ease-in-out;
   }
+}
+
+.bg-gradient-default {
+  background: linear-gradient(135deg, #fbcfe8 0%, #fca5a5 40%, #ef4444 100%);
+}
+
+.bg-gradient-deep {
+  background: linear-gradient(135deg, #be123c 0%, #881337 50%, #4c0519 100%);
+}
+
+.cursor-heart {
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24' fill='%23ff1f2d' stroke='white' stroke-width='2'><path d='M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z'></path></svg>") 16 16, auto;
 }
 
 .heart-bg {

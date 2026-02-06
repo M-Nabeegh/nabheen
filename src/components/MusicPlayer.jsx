@@ -4,7 +4,8 @@ import { motion } from 'framer-motion';
 
 const MusicPlayer = forwardRef((props, ref) => {
     const [isPlaying, setIsPlaying] = useState(false);
-    const audioRef = useRef(new Audio('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3')); // Placeholder, should be replaced with better romantic music
+    // Using a soft romantic piano track (example source)
+    const audioRef = useRef(new Audio('https://cdn.pixabay.com/download/audio/2022/03/24/audio_3496c2152e.mp3?filename=romantic-piano-110065.mp3'));
 
     useImperativeHandle(ref, () => ({
         play: () => {

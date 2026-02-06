@@ -20,7 +20,6 @@ const Success = ({ onReset }) => {
             }
 
             const particleCount = 50 * (timeLeft / duration);
-            // since particles fall down, start a bit higher than random
             confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } }));
             confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } }));
         }, 250);
@@ -28,31 +27,45 @@ const Success = ({ onReset }) => {
         return () => clearInterval(interval);
     }, []);
 
+    const container = {
+        hidden: { opacity: 0 },
+        show: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 1.5,
+                delayChildren: 0.5
+            }
+        }
+    };
+
+    const item = {
+        hidden: { opacity: 0, y: 20 },
+        show: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }
+    };
+
     return (
         <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
+            variants={container}
+            initial="hidden"
+            animate="show"
             className="text-center w-full max-w-4xl px-6 relative z-10 flex flex-col items-center"
         >
-            <h2 className="font-cursive text-5xl md:text-7xl mb-8 leading-tight">
-                You’ll always be my Valentine, <br />Farheen.
-            </h2>
-            <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1 }}
-                className="text-xl md:text-2xl font-light space-y-4"
-            >
-                <p>Today, tomorrow, and always.</p>
-                <p>I love you more than words can ever say ❤️</p>
-            </motion.div>
+            <motion.p variants={item} className="font-cursive text-5xl md:text-7xl mb-6 text-pink-100 drop-shadow-lg leading-tight">
+                Farheen,<br /> this was never a question.
+            </motion.p>
+
+            <motion.p variants={item} className="text-2xl md:text-3xl font-light text-white/90 mb-4 tracking-wide">
+                You were always the answer.
+            </motion.p>
+
+            <motion.p variants={item} className="font-cursive text-4xl md:text-6xl text-red-100 mt-4 drop-shadow-md">
+                Happy Valentine’s Day ❤️
+            </motion.p>
 
             <motion.button
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 3 }}
+                variants={item}
                 onClick={onReset}
-                className="mt-12 flex items-center gap-2 px-6 py-2 bg-white/10 hover:bg-white/20 rounded-full text-sm text-white/80 transition-colors backdrop-blur-sm"
+                className="mt-16 flex items-center gap-2 px-6 py-2 bg-white/10 hover:bg-white/20 rounded-full text-sm text-white/60 transition-colors backdrop-blur-sm"
             >
                 <RotateCcw size={16} />
                 Relive it again
