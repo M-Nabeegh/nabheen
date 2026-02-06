@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@400;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-cursive: "Great Vibes", cursive;
+  --font-sans: "Inter", sans-serif;
+
+  --color-valentine-50: #fff0f1;
+  --color-valentine-100: #ffdbdd;
+  --color-valentine-200: #ffb3b6;
+  --color-valentine-300: #ff8a90;
+  --color-valentine-400: #ff535c;
+  --color-valentine-500: #ff1f2d;
+  --color-valentine-600: #db0f1f;
+  --color-valentine-700: #b80c19;
+  --color-valentine-800: #990f1b;
+  --color-valentine-900: #7f141d;
+  --color-valentine-950: #45070c;
+}
+
+@layer base {
+  body {
+    @apply bg-gradient-to-br from-pink-200 via-red-300 to-red-500 min-h-screen overflow-hidden font-sans text-white;
+  }
+}
+
+.heart-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+  pointer-events: none;
+}
