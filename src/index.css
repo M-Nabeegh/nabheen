@@ -20,7 +20,7 @@
 
 @layer base {
   body {
-    @apply min-h-screen overflow-hidden font-sans text-white transition-colors duration-1000 ease-in-out;
+    @apply min-h-screen font-sans text-white transition-colors duration-1000 ease-in-out;
   }
 }
 
