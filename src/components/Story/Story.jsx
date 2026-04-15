@@ -222,7 +222,14 @@ export default function Story() {
       if (isPlaying) {
         audioRef.current.pause();
       } else {
-        audioRef.current.play();
+        const playPromise = audioRef.current.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(err => {
+            console.error("Audio load failed, forcing reload:", err);
+            audioRef.current.load();
+            audioRef.current.play().catch(e => console.error("Final audio failure:", e));
+          });
+        }
       }
       setIsPlaying(!isPlaying);
     }
@@ -233,8 +240,8 @@ export default function Story() {
       <FloatingElements />
 
       {/* Background Audio (Hidden) */}
-      <audio ref={audioRef} loop>
-        <source src="song.mp3" type="audio/mpeg" />
+      <audio ref={audioRef} loop preload="auto" playsInline>
+        <source src={`${import.meta.env.BASE_URL}song.mp3`} type="audio/mpeg" />
       </audio>
 
       {/* Landing Section */}
