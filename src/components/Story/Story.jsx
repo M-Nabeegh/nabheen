@@ -134,19 +134,26 @@ const TypewriterText = ({ text }) => {
       initial="hidden"
       animate="visible"
       variants={{
-        visible: { transition: { staggerChildren: 0.1 } },
+        visible: { transition: { staggerChildren: 0.08 } },
       }}
+      className="inline-flex flex-wrap justify-center align-middle"
+      style={{ columnGap: '0.6em', rowGap: '0.2em' }}
     >
-      {text.split('').map((char, i) => (
-        <motion.span
-          key={i}
-          variants={{
-            hidden: { opacity: 0, scale: 0.5 },
-            visible: { opacity: 1, scale: 1 },
-          }}
-        >
-          {char === ' ' ? '\u00A0' : char}
-        </motion.span>
+      {text.split(' ').map((word, wIdx) => (
+        <span key={wIdx} className="inline-block whitespace-nowrap">
+          {word.split('').map((char, cIdx) => (
+            <motion.span
+              key={cIdx}
+              className="inline-block"
+              variants={{
+                hidden: { opacity: 0, scale: 0.5 },
+                visible: { opacity: 1, scale: 1 },
+              }}
+            >
+              {char}
+            </motion.span>
+          ))}
+        </span>
       ))}
     </motion.span>
   );
@@ -227,7 +234,7 @@ export default function Story() {
 
       {/* Background Audio (Hidden) */}
       <audio ref={audioRef} loop>
-        <source src="/song.mp3" type="audio/mpeg" />
+        <source src="song.mp3" type="audio/mpeg" />
       </audio>
 
       {/* Landing Section */}
