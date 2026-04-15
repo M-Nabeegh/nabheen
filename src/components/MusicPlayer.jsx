@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 const MusicPlayer = forwardRef((props, ref) => {
     const [isPlaying, setIsPlaying] = useState(false);
     // Using a soft romantic piano track (example source)
-    const audioRef = useRef(new Audio('/Song.mp3'));
+    const audioRef = useRef(new Audio('/song.mp3'));
 
     useImperativeHandle(ref, () => ({
         play: () => {

@@ -2,6 +2,9 @@ import React, { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import FloatingElements from './FloatingElements';
 import LoveLetter from './LoveLetter';
+import TimeCounter from './TimeCounter';
+import MemoryWall from './MemoryWall';
+import FinalEnding from './FinalEnding';
 
 const chapters = [
   {
@@ -22,14 +25,14 @@ const chapters = [
     id: 3,
     title: "Chapter 3",
     subtitle: "That Sehri Night (19th March) 🌙",
-    content: "That Sehri changed everything.\nI saw your raw side… the caring, the real you.\nAs we walked around GIKI, talking about life and families, it just felt right.\nYou could relate to me, and I could relate to you.\nThat day, I felt like I found the perfect mix… someone family-oriented and exactly my type.\nYar jani, I’ll never forget that night.",
+    content: "That Sehri changed everything.\nI saw your raw side… the caring, the real you.\nAs we walked around GIKI, talking about life and families, it just felt right.\nYou could relate to me, and I could relate to you.\nThat day, I felt like I found the perfect mix… someone family oriented and exactly my type.\nYar jani, I’ll never forget that night.",
     images: 1
   },
   {
     id: 4,
     title: "Chapter 4",
     subtitle: "The Proposal 💌",
-    content: "Mid-break… and all I could think about was you.\nI spent hours talking to my friend planning how to propose.\nI even bought a book for you—my first and last gift to any girl.\nComing back to GIKI, your acknoledged Saeen message made my day.\nI tried for 2 days… nervous, overthinking everything.\nAnd then finally… 15th April.\nI still remember waiting for the perfect moment, hoping it wouldn’t get awkward.\nBut I did it… and it was the best decision ever.",
+    content: "Mid break… and all I could think about was you.\nI spent hours talking to my friend planning how to propose.\nI even bought a book for you my first and last gift to any girl.\nComing back to GIKI, your acknoledged Saeen message made my day.\nI tried for 2 days… nervous, overthinking everything.\nAnd then finally… 15th April.\nI still remember waiting for the perfect moment, hoping it wouldn’t get awkward.\nBut I did it… and it was the best decision ever.",
     images: 1
   },
   {
@@ -43,13 +46,13 @@ const chapters = [
     id: 6,
     title: "Chapter 6",
     subtitle: "Our First Fight 🌧️",
-    content: "Our first kalesh…\nI used to wonder why couples fight. That day, I got my answer—just misunderstandings.\nI said sorry, you smiled… and just like that, everything was okay again.\nMaybe that’s when I realized—we’ll always find our way back.",
+    content: "Our first kalesh…\nI used to wonder why couples fight. That day, I got my answer just misunderstandings.\nI said sorry, you smiled… and just like that, everything was okay again.\nMaybe that’s when I realized we’ll always find our way back.",
     images: 1
   },
   {
     id: 7,
     title: "Chapter 7",
-    subtitle: "NSC — Our First Trip Together 🏞️",
+    subtitle: "NSC Our First Trip Together 🏞️",
     content: "NSC… our first trip.\nThat qawali night… unforgettable.\nWhen you slept on me, I didn’t want that moment to end.\nI was happy… and a little shy too, especially with Tooba capturing everything.\nAnd that hug during hiking…\nThat was the most romantic moment for me.",
     images: 2
   },
@@ -57,21 +60,21 @@ const chapters = [
     id: 8,
     title: "Chapter 8",
     subtitle: "The Trust Moment (16th May) 🤍",
-    content: "The day you opened up about your past…\nI had been waiting for that moment—not out of curiosity, but because it meant trust.\nIt was like a checklist in my mind:\n“The day she tells me everything… that’s when I’ll know.”\nAnd when you did… I knew.\nIt took you 30 days… and it meant everything.",
+    content: "The day you opened up about your periods …\nI had been waiting for that moment not out of curiosity, but because it meant trust.\nIt was like a checklist in my mind:\n“The day she tells me everything… that’s when I’ll know.”\nAnd when you did… I knew.\nIt took you 30 days… and it meant everything.",
     images: 1
   },
   {
     id: 9,
     title: "Chapter 9",
     subtitle: "The Goodbye Before Summer 💔",
-    content: "The last day before summer… I didn’t want to leave.\nThat goodbye kiss… the rush, the emotions…\nI felt so deeply connected to you in that moment.\nThat day, I promised myself:\nNo matter what happens, I’m never going back. We’re in this—and we’ll make it work, InshaAllah.",
+    content: "The last day before summer… I didn’t want to leave.\nThat goodbye kiss… the rush, the emotions…\nI felt so deeply connected to you in that moment.\nThat day, I promised myself:\nNo matter what happens, I’m never going back. We’re in this and we’ll make it work, InshaAllah.",
     images: 1
   },
   {
     id: 10,
     title: "Chapter 10",
     subtitle: "Through Distance & The Surprise 🌆",
-    content: "Hyderabad… one of the hardest phases.\nWe couldn’t talk properly, things were tough… but we held on.\nAfter all those hurdles, summer ended.\nAnd then… I came back to GIKI to surprise you.\nThe way you ran towards me… I can’t explain that feeling.\nI even hid gifts from my parents—almost got caught by mama.\nBut honestly… everything I do is just to see you smile.\nYour happiness is everything to me.",
+    content: "Hyderabad… one of the hardest phases.\nWe couldn’t talk properly, things were tough… but we held on.\nAfter all those hurdles, summer ended.\nAnd then… I came back to GIKI to surprise you.\nThe way you ran towards me… I can’t explain that feeling.\nI even hid gifts from my parents almost got caught by mama.\nBut honestly… everything I do is just to see you smile.\nYour happiness is everything to me.",
     images: 2
   },
   {
@@ -85,15 +88,43 @@ const chapters = [
     id: 12,
     title: "Chapter 12",
     subtitle: "The Birthday I Felt Loved 🎂",
-    content: "My birthday…\nDeep down, I was expecting something—but the inner child in me was just happy that someone cared enough to plan.\nAnd you… you aced it.\nThe people, the gifts, the perfume (which I still use slowly because I love it too much),\nthe handwritten card…\nYar, it was one of the most beautiful days of my life.",
+    content: "My birthday…\nDeep down, I was expecting something but the inner child in me was just happy that someone cared enough to plan.\nAnd you… you aced it.\nThe people, the gifts, the perfume (which I still use slowly because I love it too much),\nthe handwritten card…\nYar, it was one of the most beautiful days of my life.",
     images: 1
   },
   {
     id: 13,
     title: "Chapter 13",
     subtitle: "Your Birthday, My Effort 👑",
-    content: "Then came your birthday…\nI even asked my parents for your suit—mama and baba both helped pick it from Aobhan.\nI had been planning since summer, saving money just so I could do everything properly.\nAnd when I saw you happy… it was all worth it.\nThe necklace with “N”… you still wear it—hayee.\nThe handwritten letter, every little detail…\nI’ll always do everything I can, just to see you happy.",
+    content: "Then came your birthday…\nI even asked my parents for your suit mama and baba both helped pick it from Aobhan.\nI had been planning since summer, saving money just so I could do everything properly.\nAnd when I saw you happy… it was all worth it.\nThe necklace with “N”… you still wear it hayee.\nThe handwritten letter, every little detail…\nI’ll always do everything I can, just to see you happy.",
     images: 2
+  },
+  {
+    id: 14,
+    title: "Chapter 14",
+    subtitle: "The Award & Your Effort 🏆",
+    content: "The day my award finally came…\nAnd you were the one who gave it to me.\nYou came all the way to the airport just to see me yar that effort meant everything.\nWhen I saw you there, I can’t even explain the feeling… it was pure happiness.\nThe award, the red Cheetos (hayee, you remember everything),\nand most importantly… the way you celebrated my success more than I did myself.\nThat’s when I realized \nyou’re not just my love, you’re my biggest supporter.\nAnd that photo of you holding my award…\nOne of my absolute favorites.",
+    images: 1
+  },
+  {
+    id: 15,
+    title: "Chapter 15",
+    subtitle: "Us Against Everything (After Mids) 📚",
+    content: "After mids… we went through a lot together.\nWe spent some of our best time \nwe fought, we navigated things, we understood each other better.\nEven during exams and stress, you were there… cheering me up.\nIt wasn’t perfect, but it was real.\nAnd honestly… that made it even more beautiful.\nJani, thank you for that time for staying, for understanding, for choosing us.",
+    images: 0
+  },
+  {
+    id: 16,
+    title: "Chapter 16",
+    subtitle: "Same Us, Same Love ✨",
+    content: "After 3 weeks of semester break…\nwe met again.\nAnd nothing had changed.\nSame energy, same connection, same comfort.\nIt felt like no time had passed at all.\nThat’s when I knew \nthis isn’t temporary… this is something real.",
+    images: 0
+  },
+  {
+    id: 17,
+    title: "Final Chapter",
+    subtitle: "To Infinity ♾️",
+    content: "Jani… our story doesn’t end here.\nThere are no last chapters for us \njust more memories, more moments, more love.\nFrom:\n• 1 day message\n• to 1 week\n• to 1 month…\nand now 1 year\nI still can’t believe it.\nWe’ve come so far… and this is just the beginning.\nWe’re in this together and we always will be, InshaAllah.\n1 year… and forever to go ❤️",
+    images: 0
   }
 ];
 
@@ -110,8 +141,8 @@ const TypewriterText = ({ text }) => {
         <motion.span
           key={i}
           variants={{
-             hidden: { opacity: 0, scale: 0.5 },
-             visible: { opacity: 1, scale: 1 },
+            hidden: { opacity: 0, scale: 0.5 },
+            visible: { opacity: 1, scale: 1 },
           }}
         >
           {char === ' ' ? '\u00A0' : char}
@@ -126,7 +157,7 @@ const FadeIn = ({ children, delay = 0, direction = "up" }) => {
     switch (direction) {
       case "left": return { opacity: 0, x: -60, y: 20 };
       case "right": return { opacity: 0, x: 60, y: 20 };
-      case "up": 
+      case "up":
       default: return { opacity: 0, y: 40 };
     }
   };
@@ -148,7 +179,7 @@ const ImagePlaceholder = ({ index, chapterId, subIndex }) => (
     <span className="text-4xl mb-4">📸</span>
     <p className="font-serif italic text-center font-medium">Place your image here</p>
     <p className="text-sm mt-2 opacity-70">Image {chapterId}{subIndex ? `-${subIndex}` : ''}</p>
-    
+
     <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#fff0f5] opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center rounded-3xl">
       <p className="bg-white/80 px-4 py-2 rounded-full shadow-sm text-sm font-semibold text-[#880e4f]">Update src in codebase</p>
     </div>
@@ -164,9 +195,11 @@ const ImageRender = ({ index, chapterId, subIndex }) => {
   }
 
   return (
-    <img 
-      src={imgSrc} 
-      alt={`Chapter ${chapterId}`} 
+    <img
+      src={imgSrc}
+      alt={`Chapter ${chapterId}`}
+      loading="lazy"
+      decoding="async"
       className="w-full h-full object-cover rounded-xl shadow-inner bg-[#fff0f5]"
       onError={() => setError(true)}
     />
@@ -191,10 +224,10 @@ export default function Story() {
   return (
     <div className="bg-[#fff0f5] min-h-screen text-[#4a4a4a] overflow-x-hidden selection:bg-[#f8bbd0] selection:text-[#880e4f] font-sans relative">
       <FloatingElements />
-      
+
       {/* Background Audio (Hidden) */}
       <audio ref={audioRef} loop>
-        <source src="/story/dummy_music.mp3" type="audio/mpeg" />
+        <source src="/song.mp3" type="audio/mpeg" />
       </audio>
 
       {/* Landing Section */}
@@ -203,43 +236,45 @@ export default function Story() {
           <h1 className="font-serif text-4xl sm:text-5xl md:text-8xl text-[#880e4f] mb-4 sm:mb-6 drop-shadow-sm flex flex-wrap justify-center gap-x-2">
             <TypewriterText text="Happy Anniversary my Fari" />
           </h1>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1.5, delay: 0.5 }}
-            className="text-lg sm:text-2xl md:text-4xl text-[#c2185b] italic font-light mb-12 sm:mb-16 drop-shadow-sm text-center px-4"
+            className="text-lg sm:text-2xl md:text-4xl text-[#c2185b] italic font-light mb-8 drop-shadow-sm text-center px-4"
           >
-            1 year, countless memories
+            Together since April 16, 2025
           </motion.p>
-          
+
+          <TimeCounter startDate="2025-04-16T00:00:00" />
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 1 }}
-            className="flex flex-col sm:flex-row gap-6"
+            className="flex flex-col sm:flex-row gap-4 sm:gap-6 w-full sm:w-auto px-6 sm:px-0"
           >
-            <button 
+            <button
               onClick={() => {
-                 window.scrollTo({ top: window.innerHeight, behavior: 'smooth' });
-                 if (!isPlaying && audioRef.current) toggleMusic();
+                window.scrollTo({ top: window.innerHeight, behavior: 'smooth' });
+                if (!isPlaying && audioRef.current) toggleMusic();
               }}
-              className="px-10 py-5 rounded-full bg-[#fce4ec]/90 backdrop-blur-sm text-[#880e4f] border border-[#f8bbd0] font-serif shadow-sm hover:bg-[#f8bbd0] transition-colors cursor-pointer text-xl"
+              className="w-full sm:w-auto px-10 py-4 sm:py-5 rounded-full bg-[#fce4ec]/90 backdrop-blur-sm text-[#880e4f] border border-[#f8bbd0] font-serif shadow-sm hover:bg-[#f8bbd0] transition-colors cursor-pointer text-lg sm:text-xl"
             >
               Start Our Journey
             </button>
             <button
-               onClick={toggleMusic}
-               className="px-10 py-5 rounded-full border border-[#f8bbd0] bg-white/50 backdrop-blur-sm text-[#c2185b] font-serif hover:bg-[#fce4ec] transition-colors cursor-pointer text-xl"
+              onClick={toggleMusic}
+              className="w-full sm:w-auto px-10 py-4 sm:py-5 rounded-full border border-[#f8bbd0] bg-white/50 backdrop-blur-sm text-[#c2185b] font-serif hover:bg-[#fce4ec] transition-colors cursor-pointer text-lg sm:text-xl"
             >
               {isPlaying ? 'Pause Music' : 'Play Music'}
             </button>
           </motion.div>
         </div>
-        
+
         {/* Soft decorative landing element */}
-        <motion.div 
-          initial={{ opacity: 0 }} 
-          animate={{ opacity: 1 }} 
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           transition={{ duration: 2, delay: 1.5 }}
           className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center animate-bounce text-[#f48fb1]"
         >
@@ -252,17 +287,17 @@ export default function Story() {
       <div className="relative z-10 py-20">
         {chapters.map((chapter, index) => {
           const isEven = index % 2 === 0;
-          
+
           return (
             <section key={chapter.id} className={`min-h-[80vh] flex items-center py-24 px-6 md:px-20 max-w-7xl mx-auto my-12 ${isEven ? '' : 'bg-[#fff5f8] rounded-3xl shadow-sm border border-[#fce4ec]'}`}>
-              <div className={`flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-16 w-full`}>
-                
+              <div className={`flex flex-col ${chapter.images > 0 ? (isEven ? 'md:flex-row' : 'md:flex-row-reverse') : ''} items-center gap-16 w-full`}>
+
                 {/* Text Content */}
-                <div className="md:w-1/2 flex flex-col text-center md:text-left">
+                <div className={`${chapter.images > 0 ? 'md:w-1/2 text-center md:text-left' : 'w-full max-w-4xl text-center'} flex flex-col`}>
                   <FadeIn direction={isEven ? 'left' : 'right'}>
                     <h2 className="font-serif text-4xl md:text-5xl text-[#880e4f] mb-2 sm:mb-4">{chapter.title}</h2>
                     <h3 className="font-serif text-2xl md:text-3xl text-[#c2185b] italic mb-6 sm:mb-8">{chapter.subtitle}</h3>
-                    
+
                     <div className="space-y-4 sm:space-y-6">
                       {chapter.content.split('\n').map((paragraph, pIndex) => (
                         <p key={pIndex} className="text-lg md:text-xl leading-relaxed text-gray-700 font-light">
@@ -274,43 +309,48 @@ export default function Story() {
                 </div>
 
                 {/* Images */}
-                <div className="md:w-1/2 w-full flex flex-col sm:flex-row gap-6 justify-center">
-                  {chapter.images === 1 ? (
-                    <FadeIn direction={isEven ? 'right' : 'left'} delay={0.3}>
-                      <motion.div 
-                        whileHover={{ scale: 1.03 }}
-                        className="w-[280px] sm:w-[400px] aspect-[4/5] rounded-2xl shadow-2xl bg-white p-2 pb-10 sm:p-3 sm:pb-14 transition-all duration-500 mx-auto"
-                      >
-                        <ImageRender index={index} chapterId={chapter.id} />
-                      </motion.div>
-                    </FadeIn>
-                  ) : (
-                    <div className="flex flex-col sm:flex-row items-center justify-center relative w-full pt-10 sm:pt-0">
-                      <FadeIn direction={isEven ? 'right' : 'left'} delay={0.2}>
-                        <motion.div 
-                          whileHover={{ scale: 1.1, rotate: -2, zIndex: 30 }}
-                          className="w-[240px] sm:w-[280px] aspect-[4/5] rounded-2xl shadow-xl transform -rotate-6 bg-white p-2 pb-10 sm:p-3 sm:pb-14 relative z-10 sm:mr-[-40px] mb-[-40px] sm:mb-0 mt-0 sm:mt-8 transition-transform duration-300 mx-auto"
+                {chapter.images > 0 && (
+                  <div className="md:w-1/2 w-full flex flex-col sm:flex-row gap-6 justify-center">
+                    {chapter.images === 1 ? (
+                      <FadeIn direction={isEven ? 'right' : 'left'} delay={0.3}>
+                        <motion.div
+                          whileHover={{ scale: 1.03 }}
+                          className="w-[75vw] max-w-[280px] sm:max-w-none sm:w-[400px] aspect-[4/5] rounded-2xl shadow-2xl bg-white p-2 pb-10 sm:p-3 sm:pb-14 transition-all duration-500 mx-auto"
                         >
-                          <ImageRender index={index} chapterId={chapter.id} subIndex={1} />
+                          <ImageRender index={index} chapterId={chapter.id} />
                         </motion.div>
                       </FadeIn>
-                      <FadeIn direction={isEven ? 'right' : 'left'} delay={0.4}>
-                         <motion.div 
-                           whileHover={{ scale: 1.1, rotate: 2, zIndex: 30 }}
-                           className="w-[240px] sm:w-[280px] aspect-[4/5] rounded-2xl shadow-xl transform rotate-6 bg-white p-2 pb-10 sm:p-3 sm:pb-14 relative z-20 md:translate-y-16 transition-transform duration-300 mx-auto"
-                        >
-                          <ImageRender index={index} chapterId={chapter.id} subIndex={2} />
-                        </motion.div>
-                      </FadeIn>
-                    </div>
-                  )}
-                </div>
+                    ) : (
+                      <div className="flex flex-col sm:flex-row items-center justify-center relative w-full pt-10 sm:pt-0">
+                        <FadeIn direction={isEven ? 'right' : 'left'} delay={0.2}>
+                          <motion.div
+                            whileHover={{ scale: 1.1, rotate: -2, zIndex: 30 }}
+                            className="w-[65vw] max-w-[240px] sm:max-w-none sm:w-[280px] aspect-[4/5] rounded-2xl shadow-xl transform -rotate-6 bg-white p-2 pb-10 sm:p-3 sm:pb-14 relative z-10 sm:mr-[-40px] mb-[-40px] sm:mb-0 mt-0 sm:mt-8 transition-transform duration-300 mx-auto"
+                          >
+                            <ImageRender index={index} chapterId={chapter.id} subIndex={1} />
+                          </motion.div>
+                        </FadeIn>
+                        <FadeIn direction={isEven ? 'right' : 'left'} delay={0.4}>
+                          <motion.div
+                            whileHover={{ scale: 1.1, rotate: 2, zIndex: 30 }}
+                            className="w-[65vw] max-w-[240px] sm:max-w-none sm:w-[280px] aspect-[4/5] rounded-2xl shadow-xl transform rotate-6 bg-white p-2 pb-10 sm:p-3 sm:pb-14 relative z-20 md:translate-y-16 transition-transform duration-300 mx-auto"
+                          >
+                            <ImageRender index={index} chapterId={chapter.id} subIndex={2} />
+                          </motion.div>
+                        </FadeIn>
+                      </div>
+                    )}
+                  </div>
+                )}
 
               </div>
             </section>
           );
         })}
       </div>
+
+      {/* Scattered Memories Wall */}
+      <MemoryWall />
 
       {/* Final Section */}
       <section className="min-h-[80vh] flex flex-col items-center justify-center py-20 px-4 relative z-10 bg-gradient-to-b from-transparent to-[#fce4ec]/60 border-t border-[#fce4ec]">
@@ -320,22 +360,22 @@ export default function Story() {
               Happy 1 Year ❤️
             </h1>
             <p className="text-xl sm:text-2xl md:text-4xl text-[#c2185b] italic font-light mb-12 sm:mb-16 max-w-3xl mx-auto leading-relaxed px-4">
-              Thank you for trusting me, for loving me, and for the most beautiful year. <br/>
+              Thank you for trusting me, for loving me, and for the most beautiful year. <br />
               Here is to forever.
             </p>
-            
+
             <LoveLetter />
+
+            <div className="mt-32 mb-16 text-[#d81b60] font-serif text-xl sm:text-3xl italic tracking-wide drop-shadow-sm font-light">
+              yar my cute fariii love youuuuuuuuuuuuuuuuu ❤️
+            </div>
           </div>
         </FadeIn>
-        
-        {/* Placeholder for the Final Celebration Image */}
-        <div className="mt-24 w-[90%] max-w-4xl mx-auto h-[400px]">
-           <FadeIn delay={0.3}>
-             <ImagePlaceholder index="final" chapterId="Final Celebration" />
-           </FadeIn>
-        </div>
       </section>
-      
+
+      {/* Cinematic Final Sequenced Ending */}
+      <FinalEnding />
+
     </div>
   );
 }
